@@ -1,0 +1,13 @@
+general:
+    accounts:
+        foo_gmail:
+            host: mail.google.com
+            port: 443
+            user: foo
+            password: foopass
+        foo_hotmail:
+            host: mail.hotmail.com
+            port: 443
+            user: foo
+            password: anotherfoopass
+
