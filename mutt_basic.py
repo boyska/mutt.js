@@ -1,11 +1,16 @@
-import string
+import utils
 import os
+import hooks
 
 def init(config, rules):
-    os.mkdir('build/mutt')
+    if not os.path.exists('build/mutt'):
+        os.mkdir('build/mutt')
     open('build/mutt/muttrc', 'w').write(
-        string.Template(main_template).substitute(alternates='|'.join(
-        config['general']['accounts'].keys()), maillists='', build_dir='conf')
+        utils.Template(main_template).substitute(
+            alternates='|'.join(config['general']['accounts'].keys()),
+            maillists='',
+            build_dir='conf',
+            )
         )
     return
 
@@ -22,6 +27,8 @@ alternates "$alternates"
 
 $maillists
 
+$filter_mutt_pre_source
 source ${build_dir}/mutt/sending
 source ${build_dir}/mutt/view
+$filter_mutt_post_source
 '''

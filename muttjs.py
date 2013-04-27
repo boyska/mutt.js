@@ -18,7 +18,7 @@ def get_config(filename):
 
 #TODO: use a decent logging system
 def warn(text):
-    print >>sys.stderr, "[W] " + text
+    print ("[W] " + text, file=sys.stderr)
 
 def run_generators(config, rules):
     for generator in rules['generators']: #oh, let's hope there is nothing else then mutt_basic
