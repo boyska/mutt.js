@@ -1,0 +1,79 @@
+###
+# mutt colors file
+###
+
+# set default
+color normal white default
+
+# main colors
+color status green default
+#   color indicator brightwhite default
+color indicator default blue
+color tree blue default
+color error brightred default
+color message brightyellow default
+
+# uncolor certain messages
+uncolor index "~P"
+uncolor index "~N"
+uncolor index "!~N ~p"
+uncolor index "~T"
+uncolor index "~D"
+
+# and recolor them appropriately
+#color index brightblack default "~P"
+color index color243 default "~P" #from me
+color index cyan default "~N !~p" # new ML mail
+color index brightyellow default "~N ~p" # new non-ML mail
+color index yellow default "!~N ~p" # new non-ML mail
+color index brightgreen default "~T" #tagged
+color index brightred default "~D"
+
+# set up the headers
+color header brightyellow default "^from:"
+color header yellow default "^to:"
+color header yellow default "^cc:"
+color header yellow default "^date:"
+color header brightblue default "^subject:"
+
+# message bodies
+color attachment yellow default
+color search red white
+color signature cyan default
+color tilde blue default
+
+# urls
+color body brightblue default "(^|<| )mailto:[^ ]+@[^ ]( |>|$)"
+color body brightblue default "(^|<| )(http|https|ftp|file|telnet|news|finger)://[^ ]+( |>|$)"
+
+# smileys, the right way and the backward-ass euro way
+color body brightmagenta default "(^| )+(|[<>|])[8;:](|[^ ])[)(/|DOPS]( |$)+"
+color body brightmagenta default "(^| )+[)(/|DOPS](|[^ ])[8;:](|[<>|])( |$)+"
+
+# *bold*, _underline_, and /italic/
+color body brightwhite default "(^| )\\*[^*]+\\*( |$)"
+mono body bold "(^| )\\*[^*]+\\*( |$)"
+color body cyan default "(^| )_[^_]+_( |$)"
+mono body underline "(^| )_[^_]+_( |$)"
+color body cyan default "(^| )/[^/]+/( |$)"
+mono body standout "(^| )/[^/]+/( |$)"
+
+# quote blocks
+color quoted magenta default
+color quoted1 cyan default
+color quoted2 green default
+color quoted3 magenta default
+color quoted4 cyan default
+color quoted5 green default
+color quoted6 magenta default
+color quoted7 cyan default
+
+# PGP messages
+color  body            brightgreen    default "^gpg: Good signature .*"
+color  body            white           default "^gpg: "
+color  body            brightwhite     red     "^gpg: BAD signature from.*"
+mono   body            bold                    "^gpg: Good signature"
+mono   body            bold                    "^gpg: BAD signature from.*"
+
+
+# vim: set ft=muttrc:

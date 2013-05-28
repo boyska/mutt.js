@@ -1,0 +1,17 @@
+# Sending
+
+set edit_headers=yes
+set envelope_from=yes
+set sendmail="/usr/bin/msmtp"
+source ~/mail-conf/mutt/gpg
+
+#address book
+set query_command="~/mail-conf/bin/notmuch_addresses.py '%s'"
+set alias_file=~/mail-conf/mutt/aliases
+set sort_alias=alias
+source $alias_file
+
+send-hook . 'reset pgp_autoencrypt'
+source ~/mail-conf/mutt/special_rules.mutt
+
+# vim: set ft=muttrc:

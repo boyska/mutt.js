@@ -1,0 +1,36 @@
+# View
+
+#global
+source ~/mail-conf/mutt/colors
+
+# special colors for special emails
+$filter_color_index_special
+
+set pager_index_lines=10 #view messages on top of current one
+
+# index options
+set sort                = threads                       # like gmail 
+set sort_aux            = reverse-last-date-received    # like gmail
+set sort_re                                             # thread based on reply_regexp
+
+#reading mails
+set mailcap_path = ~/mail-conf/mutt/mailcap
+# set date_format="%a%d%b %H:%M"
+set locale=it_IT.utf-8
+# set index_format="%Z [%d] %-30.30F %s"
+set reverse_alias
+set index_format="`echo $HOME`/mail-conf/bin/index_format.sh '%[%s]' '[DATE] %-25.25F %-9.9Z %s'|"
+set folder_format="%f%> %d"
+auto_view	text/html
+alternative_order	text/plain	text/html
+#macro pager \cb <pipe-entry>'urlview'<enter> 'Follow links with urlview'
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+#macro index,pager \cb "<enter-command> set my_pdsave=\$pipe_decode<enter>\
+#<enter-command> unset pipe_decode<enter>\
+#<pipe-message>extract_url<enter>\
+#<enter-command> set pipe_decode=\$my_pdsave<enter>" "get URLs"
+
+
+
+
+# vim: set ft=muttrc:

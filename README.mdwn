@@ -1,0 +1,23 @@
+Rationale
+========
+
+We want to separate semantic aspects (that is, what we want) from configuration
+details.
+So we have one file that we'll call `details`, and another that is called
+`instructions`.
+What's in instructions? You shall configure which program you want to use,
+which preset, some option and, given your details, a configuration will be
+made.
+
+Configuration
+-------------
+
+Just two yaml files (details and instructions). That's it.
+
+Generators and hooks
+--------------------
+
+What's the difference? A generator builds something new, a hook changes the
+output of a generator.
+
+vim: set ft=markdown tw=79:

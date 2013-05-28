@@ -1,0 +1,11 @@
+text/html;	firefox %s;
+text/html;	links -dump %s; nametemplate=%s.html; copiousoutput
+
+#image: eye of gnome on X
+image/*;	eog %s; test=test -n "$DISPLAY"
+#img_term.sh is just a wrapper on img2txt from libcaca
+image/*;	paused $HOME/bin/img_term.sh %s 
+application/msword; antiword %s; copiousoutput
+application/msword;	loffice %s
+application/pdf;	evince %s
+application/vnd.oasis.opendocument.*; loffice %s

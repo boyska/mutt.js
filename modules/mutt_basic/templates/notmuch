@@ -1,0 +1,15 @@
+virtual-mailboxes $filter_virtual_mailboxes
+
+$source_sidebar
+
+macro index,pager ,xw "<Esc>Xdate:1w.. " 'Query template: last week'
+set nm_record = yes
+set nm_record_tags ="-inbox me archive"
+
+set virtual_spoolfile = yes
+set nm_default_uri = "notmuch://`echo $$HOME`/Mail"
+
+#macro index A "<modify-labels-then-hide>+archive -unread\n<sync-mailbox>"
+macro index K "<modify-labels-then-hide>+killed -unread\n<sync-mailbox>"
+
+# vim: set ft=muttrc:

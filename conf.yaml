@@ -10,4 +10,40 @@ general:
             port: 443
             user: foo
             password: anotherfoopass
+    identities:
+        foo_gmail:
+            email: foo@gmail.com
+            name: Mr Foo
+            account: foo_gmail
+        foo2_gmail:
+            email: foo.baz@gmail.com
+            name: John Foo
+            account: foo_gmail
+        foo_hotmail:
+            email: foo@hotmail.com
+            name: Dr Foo
+            account: foo_hotmail
+compose:
+    rules:
+        # this is the old hooks.yaml
+        - domains: ['workpla.ce']
+          from: foo_hotmail #an identity name!
+        - address: ['best@frie.nd']
+          from: foo2_gmail
+    editor: vim
+reading:
+    color:
+        - address: ['best@frie.nd']
+          new: null #both new and not new
+          color: blue
+        - address: ['@workpla.ce']
+          new: true #only new emails
+          color: yellow
 
+
+
+# I expect:
+# * alternates to be set as the union of identities.*.email
+# * foo_gmail, foo2_gmail and foo_hotmail to be present in aliases.static
+# * emails to be colored appropriately in index
+# * send_hooks

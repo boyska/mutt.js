@@ -1,0 +1,20 @@
+# Reading
+
+set mbox_type=Maildir
+
+set folder="~/Mail/"
+set mask="^."
+set postponed="+drafts"
+set record="+sent"
+
+alternates "$alternates"
+
+$filter_source_notmuch #source ~/mail-conf/mutt/notmuch
+
+# ML
+
+$maillists
+
+source ~/mail-conf/mutt/sending
+
+source ~/mail-conf/mutt/view

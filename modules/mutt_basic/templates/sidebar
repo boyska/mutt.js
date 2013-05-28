@@ -1,0 +1,10 @@
+set sidebar_width = 20
+set sidebar_visible = yes
+bind index <left> sidebar-prev
+bind index <right> sidebar-next
+bind index <space> sidebar-open
+macro index,pager ,@sb_no "<enter-command> set sidebar_visible=no; macro index,pager ,t ,@sb_yes 'Toggle sidebar'<Enter>"
+macro index,pager ,@sb_yes "<enter-command> set sidebar_visible=yes; macro index,pager ,t ,@sb_no 'Toggle sidebar'<Enter>"
+macro index,pager ,t ,@sb_no 'Toggle Sidebar'
+
+# vim: set ft=muttrc:
