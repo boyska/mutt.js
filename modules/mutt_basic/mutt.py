@@ -12,7 +12,11 @@ def init(config, rules):
     subst = {}
     subst['alternates'] = [iden['email'] for key, iden in config['general']['identities'].items()]
     subst['maillists'] = ''
-    subst['build_dir'] = 'mail-conf'
+    subst['base_dir'] = os.path.expanduser('~/muttjs')
+    subst['conf_dir'] = os.path.join(subst['base_dir'], 'conf')
+    subst['mail_dir'] = os.path.join(subst['base_dir'], 'mail')
+    subst['mail_sync_dir'] = os.path.join(subst['base_dir'], 'mail/sync')
+    subst['mail_archive_dir'] = os.path.join(subst['base_dir'], 'mail/archive')
     subst['alias_file'] = os.path.join(_build, 'aliases.build')
     subst['source_sidebar'] = ''
     for f in os.listdir(_templates):
@@ -33,7 +37,7 @@ def init(config, rules):
 main_template = '''
 set mbox_type=Maildir
 
-set folder="~/Mail/"
+set folder="$mail_sync_dir"
 set mask="^."
 set postponed="+drafts"
 set record="+sent"
@@ -43,7 +47,7 @@ alternates "$alternates"
 $maillists
 
 $filter_mutt_pre_source
-source ${build_dir}/mutt/sending
-source ${build_dir}/mutt/view
+source ${conf_dir}/mutt/sending
+source ${conf_dir}/mutt/view
 $filter_mutt_post_source
 '''

@@ -9,12 +9,12 @@ set record="+sent"
 
 alternates "$alternates"
 
-$filter_source_notmuch #source ~/mail-conf/mutt/notmuch
+$filter_source_notmuch #source $conf_dir/mutt/notmuch
 
 # ML
 
 $maillists
 
-source ~/mail-conf/mutt/sending
+source $conf_dir/mutt/sending
 
-source ~/mail-conf/mutt/view
+source $conf_dir/mutt/view
