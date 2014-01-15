@@ -7,8 +7,8 @@ _cwd = os.path.dirname(__file__)
 _templates = os.path.join(_cwd, 'templates')
 _build = 'build/mutt'
 def init(config, rules):
-    if not os.path.exists('build/mutt'):
-        os.mkdir('build/mutt')
+    if not os.path.exists(_build):
+        os.mkdir(_build)
     subst = {}
     subst['alternates'] = [iden['email'] for key, iden in config['general']['identities'].items()]
     subst['maillists'] = ''
@@ -28,8 +28,9 @@ def init(config, rules):
                 buf.write(open(os.path.join(_templates, f)).read())
         else:
             with open(os.path.join(_build, f), 'w') as buf:
-                buf.write(utils.Template(open(os.path.join(_templates, f)).read())
-                        .substitute(**subst)
+                buf.write(
+                    utils.Template(open(os.path.join(_templates, f)).read())
+                    .substitute(**subst)
                     )
     return
 

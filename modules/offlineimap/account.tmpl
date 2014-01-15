@@ -1,0 +1,14 @@
+### Generated configuration for $account_name
+## by "offlineimap" generator
+[Account $account_name]
+localrepository = ${account_name}_local
+remoterepository = ${account_name}_remote
+status_backend = sqlite
+[Repository ${account_name}_local]
+type = Maildir
+localfolders = ${mail_sync_dir}/${account_name}
+[Repository ${account_name}_remote]
+type=IMAP
+remotehost = $host
+remoteuser = $user
+

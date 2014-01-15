@@ -34,15 +34,13 @@ class PluginManager:
         self.loaded[name] = imp.load_module(name, *found)
         return self.loaded[name]
 
-#s/modules/generators
+#TODO: s/modules/generators
 modules = PluginManager(['modules'])
 hooks = PluginManager(['hooks'])
 
 
 def get_config(filename):
     return load(open(filename))
-
-#TODO: use a decent logging system
 
 
 def run_generators(config, rules):
